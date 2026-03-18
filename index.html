@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPT VBP Readiness Assessment</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+            min-height: 100vh;
+            color: #fafafa;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        .container { max-width: 720px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { color: #a1a1aa; font-size: 0.95rem; }
+        .milestone-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+        .card {
+            background: #27272a;
+            border: 1px solid #3f3f46;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e4e4e7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: #d4d4d8;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #18181b;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            color: #fafafa;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #60a5fa;
+        }
+        textarea { min-height: 80px; resize: vertical; }
+        .radio-group { margin-bottom: 1rem; }
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #18181b;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .radio-option:hover { border-color: #52525b; background: #1f1f23; }
+        .radio-option input[type="radio"] { margin-top: 0.2rem; accent-color: #60a5fa; }
+        .radio-option span { font-size: 0.9rem; color: #d4d4d8; }
+        .capability-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid #3f3f46;
+        }
+        .capability-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .capability-item label { font-weight: 600; margin-bottom: 0.75rem; }
+        .capability-item .description { font-size: 0.85rem; color: #71717a; margin-bottom: 0.75rem; }
+        .rating-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+        @media (max-width: 600px) { .rating-scale { grid-template-columns: 1fr; } }
+        .rating-option { position: relative; }
+        .rating-option input { position: absolute; opacity: 0; }
+        .rating-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.4rem;
+            background: #18181b;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.7rem;
+            min-height: 60px;
+            transition: all 0.2s;
+        }
+        .rating-option input:checked + label { border-color: #60a5fa; background: rgba(96, 165, 250, 0.1); }
+        .rating-option label:hover { border-color: #52525b; }
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        button[type="submit"]:hover { opacity: 0.9; }
+        button[type="submit"]:active { transform: scale(0.98); }
+        #output-section { display: none; }
+        #formatted-output {
+            background: #18181b;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            margin-bottom: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .copy-btn {
+            background: #3f3f46;
+            border: none;
+            color: #fafafa;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover { background: #52525b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EPT VBP Readiness Assessment</h1>
+            <p class="subtitle">Value-Based Payment Capacity Assessment for Executive Leadership</p>
+            <span class="milestone-badge">💰 $26,169 Milestone</span>
+        </header>
+
+        <form id="vbp-form">
+            <div class="card">
+                <h2><span class="icon">📊</span> Organization Stats</h2>
+                <label for="patient-count">Total individual patients cared for last year</label>
+                <input type="number" id="patient-count" name="patient-count" placeholder="e.g., 15000" required>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">📋</span> VBP Proficiency</h2>
+                <label>How would you rate our proficiency in managing performance-based contracts?</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="vbp-proficiency" value="fee-for-service" required>
+                        <span><strong>Fee-for-Service:</strong> Primarily FFS billing; experience with volume-based or capitated contracts with no quality links</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="vbp-proficiency" value="pay-for-performance">
+                        <span><strong>Pay-for-Performance:</strong> Experience with FFS or capitated contracts with pay-for-performance quality components</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="vbp-proficiency" value="shared-savings">
+                        <span><strong>Shared Savings:</strong> Experience with shared savings contracts (upside risk only)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="vbp-proficiency" value="shared-risk">
+                        <span><strong>Shared Risk:</strong> Experience with shared risk contracts (upside and downside risk)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">⚡</span> Capability Ratings</h2>
+                <p style="color: #71717a; font-size: 0.85rem; margin-bottom: 1.5rem;">Rate each capability from "Not in place" to "An area of strength"</p>
+
+                <div class="capability-item">
+                    <label>1. Leadership & Strategy</label>
+                    <p class="description">Commitment to VBP and board-level engagement</p>
+                    <div class="rating-scale">
+                        <div class="rating-option"><input type="radio" name="leadership" id="leadership-1" value="not-in-place" required><label for="leadership-1">Not in place</label></div>
+                        <div class="rating-option"><input type="radio" name="leadership" id="leadership-2" value="available-via-partner"><label for="leadership-2">Available via IPA/ACO</label></div>
+                        <div class="rating-option"><input type="radio" name="leadership" id="leadership-3" value="starting"><label for="leadership-3">Starting to be in place</label></div>
+                        <div class="rating-option"><input type="radio" name="leadership" id="leadership-4" value="in-place"><label for="leadership-4">In place</label></div>
+                        <div class="rating-option"><input type="radio" name="leadership" id="leadership-5" value="strength"><label for="leadership-5">Area of strength</label></div>
+                    </div>
+                </div>
+
+                <div class="capability-item">
+                    <label>2. Operations</label>
+                    <p class="description">Ability to manage workflows and patient attribution</p>
+                    <div class="rating-scale">
+                        <div class="rating-option"><input type="radio" name="operations" id="operations-1" value="not-in-place" required><label for="operations-1">Not in place</label></div>
+                        <div class="rating-option"><input type="radio" name="operations" id="operations-2" value="available-via-partner"><label for="operations-2">Available via IPA/ACO</label></div>
+                        <div class="rating-option"><input type="radio" name="operations" id="operations-3" value="starting"><label for="operations-3">Starting to be in place</label></div>
+                        <div class="rating-option"><input type="radio" name="operations" id="operations-4" value="in-place"><label for="operations-4">In place</label></div>
+                        <div class="rating-option"><input type="radio" name="operations" id="operations-5" value="strength"><label for="operations-5">Area of strength</label></div>
+                    </div>
+                </div>
+
+                <div class="capability-item">
+                    <label>3. Data & Analytics</label>
+                    <p class="description">Capabilities for population management and quality reporting</p>
+                    <div class="rating-scale">
+                        <div class="rating-option"><input type="radio" name="data" id="data-1" value="not-in-place" required><label for="data-1">Not in place</label></div>
+                        <div class="rating-option"><input type="radio" name="data" id="data-2" value="available-via-partner"><label for="data-2">Available via IPA/ACO</label></div>
+                        <div class="rating-option"><input type="radio" name="data" id="data-3" value="starting"><label for="data-3">Starting to be in place</label></div>
+                        <div class="rating-option"><input type="radio" name="data" id="data-4" value="in-place"><label for="data-4">In place</label></div>
+                        <div class="rating-option"><input type="radio" name="data" id="data-5" value="strength"><label for="data-5">Area of strength</label></div>
+                    </div>
+                </div>
+
+                <div class="capability-item">
+                    <label>4. Financial</label>
+                    <p class="description">Ability to manage budgets, risk, and pay claims</p>
+                    <div class="rating-scale">
+                        <div class="rating-option"><input type="radio" name="financial" id="financial-1" value="not-in-place" required><label for="financial-1">Not in place</label></div>
+                        <div class="rating-option"><input type="radio" name="financial" id="financial-2" value="available-via-partner"><label for="financial-2">Available via IPA/ACO</label></div>
+                        <div class="rating-option"><input type="radio" name="financial" id="financial-3" value="starting"><label for="financial-3">Starting to be in place</label></div>
+                        <div class="rating-option"><input type="radio" name="financial" id="financial-4" value="in-place"><label for="financial-4">In place</label></div>
+                        <div class="rating-option"><input type="radio" name="financial" id="financial-5" value="strength"><label for="financial-5">Area of strength</label></div>
+                    </div>
+                </div>
+
+                <div class="capability-item">
+                    <label>5. Partnerships</label>
+                    <p class="description">Relationships and data sharing with hospitals, specialists, and IPAs/ACOs</p>
+                    <div class="rating-scale">
+                        <div class="rating-option"><input type="radio" name="partnerships" id="partnerships-1" value="not-in-place" required><label for="partnerships-1">Not in place</label></div>
+                        <div class="rating-option"><input type="radio" name="partnerships" id="partnerships-2" value="available-via-partner"><label for="partnerships-2">Available via IPA/ACO</label></div>
+                        <div class="rating-option"><input type="radio" name="partnerships" id="partnerships-3" value="starting"><label for="partnerships-3">Starting to be in place</label></div>
+                        <div class="rating-option"><input type="radio" name="partnerships" id="partnerships-4" value="in-place"><label for="partnerships-4">In place</label></div>
+                        <div class="rating-option"><input type="radio" name="partnerships" id="partnerships-5" value="strength"><label for="partnerships-5">Area of strength</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">📝</span> Additional Notes (Optional)</h2>
+                <label for="notes">Any additional context or comments</label>
+                <textarea id="notes" name="notes" placeholder="Any additional information that would be helpful..."></textarea>
+            </div>
+
+            <button type="submit">Generate Summary</button>
+        </form>
+
+        <div id="output-section">
+            <div class="card">
+                <h2><span class="icon">✅</span> Assessment Summary</h2>
+                <p style="color: #71717a; font-size: 0.85rem; margin-bottom: 1rem;">Copy this summary and send to William for formal submission</p>
+                <div id="formatted-output"></div>
+                <button class="copy-btn" onclick="copyOutput()">📋 Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ratingLabels = {
+            'not-in-place': 'Not in place',
+            'available-via-partner': 'Available via IPA/ACO/MCP',
+            'starting': 'Starting to be in place',
+            'in-place': 'In place',
+            'strength': 'An area of strength'
+        };
+        const proficiencyLabels = {
+            'fee-for-service': 'Fee-for-Service (no quality-linked contracts)',
+            'pay-for-performance': 'Pay-for-Performance experience',
+            'shared-savings': 'Shared Savings (upside risk only)',
+            'shared-risk': 'Shared Risk (upside and downside)'
+        };
+
+        document.getElementById('vbp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const patientCount = formData.get('patient-count');
+            const proficiency = formData.get('vbp-proficiency');
+            const leadership = formData.get('leadership');
+            const operations = formData.get('operations');
+            const data = formData.get('data');
+            const financial = formData.get('financial');
+            const partnerships = formData.get('partnerships');
+            const notes = formData.get('notes');
+
+            const output = `VBP READINESS ASSESSMENT RESPONSES
+================================
+
+ORGANIZATION STATS
+• Total patients cared for last year: ${Number(patientCount).toLocaleString()}
+
+VBP PROFICIENCY
+• Current level: ${proficiencyLabels[proficiency]}
+
+CAPABILITY RATINGS
+
+1. Leadership & Strategy
+   → ${ratingLabels[leadership]}
+
+2. Operations  
+   → ${ratingLabels[operations]}
+
+3. Data & Analytics
+   → ${ratingLabels[data]}
+
+4. Financial
+   → ${ratingLabels[financial]}
+
+5. Partnerships
+   → ${ratingLabels[partnerships]}
+${notes ? `\nADDITIONAL NOTES\n${notes}` : ''}
+================================
+Submitted: ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
+
+            document.getElementById('formatted-output').textContent = output;
+            document.getElementById('output-section').style.display = 'block';
+            document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function copyOutput() {
+            const output = document.getElementById('formatted-output').textContent;
+            navigator.clipboard.writeText(output).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => btn.textContent = '📋 Copy to Clipboard', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
