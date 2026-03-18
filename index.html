@@ -169,12 +169,6 @@
 
         <form id="vbp-form">
             <div class="card">
-                <h2><span class="icon">📊</span> Organization Stats</h2>
-                <label for="patient-count">Total individual patients cared for last year</label>
-                <input type="number" id="patient-count" name="patient-count" placeholder="e.g., 15000" required>
-            </div>
-
-            <div class="card">
                 <h2><span class="icon">📋</span> VBP Proficiency</h2>
                 <label>How would you rate our proficiency in managing performance-based contracts?</label>
                 <div class="radio-group">
@@ -299,7 +293,6 @@
         document.getElementById('vbp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            const patientCount = formData.get('patient-count');
             const proficiency = formData.get('vbp-proficiency');
             const leadership = formData.get('leadership');
             const operations = formData.get('operations');
@@ -310,9 +303,6 @@
 
             const output = `VBP READINESS ASSESSMENT RESPONSES
 ================================
-
-ORGANIZATION STATS
-• Total patients cared for last year: ${Number(patientCount).toLocaleString()}
 
 VBP PROFICIENCY
 • Current level: ${proficiencyLabels[proficiency]}
