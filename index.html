@@ -52,10 +52,25 @@
         .rating-option label:hover { border-color: #a3a3a3; }
         button[type="submit"] { width: 100%; padding: 0.875rem; background: #171717; border: none; border-radius: 8px; color: white; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
         button[type="submit"]:hover { background: #404040; }
+        .progress-container { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 1rem 1rem 0.75rem; margin: -2rem -1rem 2rem; }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .progress-label { font-size: 0.75rem; font-weight: 500; color: #737373; }
+        .progress-percent { font-size: 0.75rem; font-weight: 600; color: #171717; }
+        .progress-bar { height: 4px; background: #e5e5e5; border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #171717; border-radius: 2px; transition: width 0.3s ease; width: 0%; }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="progress-container">
+            <div class="progress-header">
+                <span class="progress-label">Progress</span>
+                <span class="progress-percent" id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
         <header>
             <h1>VBP Readiness Assessment</h1>
             <p class="subtitle">Value-Based Payment Capacity Assessment (VaPCAT)</p>
@@ -471,5 +486,34 @@
             <button type="submit">Submit Assessment</button>
         </form>
     </div>
+    <script>
+        function updateProgress() {
+            const form = document.getElementById('vbp-form');
+            const allRequired = form.querySelectorAll('[required]');
+            const radioGroups = {};
+            let answered = 0;
+            
+            allRequired.forEach(input => {
+                if (input.type === 'radio') {
+                    if (!radioGroups[input.name]) {
+                        radioGroups[input.name] = false;
+                    }
+                    if (input.checked) {
+                        radioGroups[input.name] = true;
+                    }
+                }
+            });
+            
+            answered = Object.values(radioGroups).filter(v => v).length;
+            const total = Object.keys(radioGroups).length;
+            const percent = Math.round((answered / total) * 100);
+            
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = percent + '%';
+        }
+        
+        document.getElementById('vbp-form').addEventListener('change', updateProgress);
+        updateProgress();
+    </script>
 </body>
 </html>
