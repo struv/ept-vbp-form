@@ -20,62 +20,18 @@
         header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid #e5e5e5; }
         h1 { font-size: 1.875rem; font-weight: 600; margin-bottom: 0.5rem; color: #171717; }
         .subtitle { color: #737373; font-size: 1rem; margin-bottom: 1rem; }
-        .milestone-badge {
-            display: inline-block;
-            background: #16a34a;
-            color: white;
-            padding: 0.375rem 0.875rem;
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-        }
-        .card h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #171717;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid #f5f5f5;
-        }
+        .milestone-badge { display: inline-block; background: #16a34a; color: white; padding: 0.375rem 0.875rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500; }
+        .card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+        .card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: #171717; padding-bottom: 0.75rem; border-bottom: 1px solid #f5f5f5; }
         .section-title { font-size: 0.75rem; font-weight: 600; color: #737373; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         label { display: block; font-size: 0.9rem; color: #404040; margin-bottom: 0.5rem; font-weight: 500; }
         .question-text { font-size: 0.9rem; color: #525252; margin-bottom: 1rem; line-height: 1.5; }
-        input[type="text"], input[type="number"], textarea {
-            width: 100%;
-            padding: 0.625rem 0.875rem;
-            background: #fff;
-            border: 1px solid #d4d4d4;
-            border-radius: 6px;
-            color: #171717;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.15s, box-shadow 0.15s;
-        }
+        input[type="text"], textarea { width: 100%; padding: 0.625rem 0.875rem; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; color: #171717; font-size: 0.9rem; margin-bottom: 1rem; transition: border-color 0.15s, box-shadow 0.15s; }
         input:focus, textarea:focus { outline: none; border-color: #171717; box-shadow: 0 0 0 1px #171717; }
         textarea { min-height: 80px; resize: vertical; }
         .radio-group { margin-bottom: 0.5rem; }
-        .radio-option {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.875rem;
-            background: #fafafa;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: border-color 0.15s, background 0.15s;
-        }
+        .radio-option { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.875rem; background: #fafafa; border: 1px solid #e5e5e5; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
         .radio-option:hover { border-color: #a3a3a3; background: #f5f5f5; }
-        .radio-option.selected { border-color: #171717; background: #fafafa; }
         .radio-option input[type="radio"], .radio-option input[type="checkbox"] { margin-top: 0.15rem; accent-color: #171717; }
         .radio-option span { font-size: 0.875rem; color: #404040; }
         .radio-option strong { color: #171717; }
@@ -85,41 +41,17 @@
         .capability-section h3 { font-size: 0.9rem; font-weight: 600; color: #171717; margin-bottom: 1rem; padding: 0.5rem 0; border-bottom: 1px solid #f5f5f5; }
         .capability-item { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid #f5f5f5; }
         .capability-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .capability-item label { font-weight: 500; margin-bottom: 0.5rem; font-size: 0.875rem; }
-        .capability-item .optional { color: #a3a3a3; font-weight: 400; font-size: 0.8rem; }
+        .capability-item label { font-weight: 500; margin-bottom: 0.5rem; font-size: 0.85rem; line-height: 1.4; }
+        .capability-item .optional { color: #a3a3a3; font-weight: 400; font-size: 0.75rem; }
         .rating-scale { display: flex; gap: 0.375rem; flex-wrap: wrap; }
-        .rating-option { flex: 1; min-width: 100px; }
+        .rating-option { flex: 1; min-width: 80px; }
         @media (max-width: 600px) { .rating-option { min-width: 100%; } }
         .rating-option input { display: none; }
-        .rating-option label {
-            display: block;
-            padding: 0.5rem 0.5rem;
-            background: #fafafa;
-            border: 1px solid #e5e5e5;
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 0.7rem;
-            font-weight: 400;
-            transition: all 0.15s;
-            color: #737373;
-        }
+        .rating-option label { display: block; padding: 0.5rem 0.25rem; background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px; cursor: pointer; text-align: center; font-size: 0.65rem; font-weight: 400; transition: all 0.15s; color: #737373; }
         .rating-option input:checked + label { border-color: #171717; background: #171717; color: #fff; }
         .rating-option label:hover { border-color: #a3a3a3; }
-        button[type="submit"] {
-            width: 100%;
-            padding: 0.875rem;
-            background: #171717;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.15s;
-        }
+        button[type="submit"] { width: 100%; padding: 0.875rem; background: #171717; border: none; border-radius: 8px; color: white; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
         button[type="submit"]:hover { background: #404040; }
-        .divider { height: 1px; background: #e5e5e5; margin: 1.5rem 0; }
     </style>
 </head>
 <body>
@@ -136,7 +68,7 @@
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://struv.github.io/ept-vbp-form/success.html">
 
-            <!-- Section 2: Interest and History -->
+            <!-- Section 2 -->
             <div class="card">
                 <p class="section-title">Section 2</p>
                 <h2>Interest and History with Value-Based Payment</h2>
@@ -179,7 +111,7 @@
                 </div>
             </div>
 
-            <!-- Section 3: Capabilities -->
+            <!-- Section 3 -->
             <div class="card">
                 <p class="section-title">Section 3</p>
                 <h2>Value-Based Pay Capabilities</h2>
@@ -192,7 +124,7 @@
                     <div class="capability-item">
                         <label>Senior clinical and operations leaders who support/champion VBP work</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="A1" id="a1-1" value="Area of strength" required><label for="a1-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="A1" id="a1-1" value="Strength" required><label for="a1-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="A1" id="a1-2" value="In place"><label for="a1-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="A1" id="a1-3" value="Starting"><label for="a1-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="A1" id="a1-4" value="Via IPA/ACO"><label for="a1-4">Via IPA/ACO</label></div>
@@ -203,7 +135,7 @@
                     <div class="capability-item">
                         <label>Owner or board members who support/champion VBP implementation & investment</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="A2" id="a2-1" value="Area of strength" required><label for="a2-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="A2" id="a2-1" value="Strength" required><label for="a2-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="A2" id="a2-2" value="In place"><label for="a2-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="A2" id="a2-3" value="Starting"><label for="a2-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="A2" id="a2-4" value="Via IPA/ACO"><label for="a2-4">Via IPA/ACO</label></div>
@@ -214,7 +146,7 @@
                     <div class="capability-item">
                         <label>Committee or governance body specific to overseeing the VBP arrangement <span class="optional">*</span></label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="A3" id="a3-1" value="Area of strength"><label for="a3-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="A3" id="a3-1" value="Strength"><label for="a3-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="A3" id="a3-2" value="In place"><label for="a3-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="A3" id="a3-3" value="Starting"><label for="a3-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="A3" id="a3-4" value="Via IPA/ACO"><label for="a3-4">Via IPA/ACO</label></div>
@@ -225,7 +157,7 @@
                     <div class="capability-item">
                         <label>Determination of whether organizational entity can bear risk or should join/create a risk-bearing entity <span class="optional">*</span></label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="A4" id="a4-1" value="Area of strength"><label for="a4-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="A4" id="a4-1" value="Strength"><label for="a4-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="A4" id="a4-2" value="In place"><label for="a4-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="A4" id="a4-3" value="Starting"><label for="a4-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="A4" id="a4-4" value="Via IPA/ACO"><label for="a4-4">Via IPA/ACO</label></div>
@@ -239,9 +171,9 @@
                     <h3>B. Operations</h3>
                     
                     <div class="capability-item">
-                        <label>Person responsible for educating staff about VBP and its impact on patient care</label>
+                        <label>Person responsible for educating organization staff about VBP and its impact on patient care</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="B1" id="b1-1" value="Area of strength" required><label for="b1-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B1" id="b1-1" value="Strength" required><label for="b1-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="B1" id="b1-2" value="In place"><label for="b1-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="B1" id="b1-3" value="Starting"><label for="b1-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="B1" id="b1-4" value="Via IPA/ACO"><label for="b1-4">Via IPA/ACO</label></div>
@@ -252,7 +184,7 @@
                     <div class="capability-item">
                         <label>Person responsible for and skilled in negotiating VBP contracts/terms with payers</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="B2" id="b2-1" value="Area of strength" required><label for="b2-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B2" id="b2-1" value="Strength" required><label for="b2-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="B2" id="b2-2" value="In place"><label for="b2-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="B2" id="b2-3" value="Starting"><label for="b2-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="B2" id="b2-4" value="Via IPA/ACO"><label for="b2-4">Via IPA/ACO</label></div>
@@ -261,9 +193,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Person responsible for identifying vendors/partners and assessing terms, benefits, and risks</label>
+                        <label>Person responsible for identifying vendors/partners to support VBP work and assessing terms, benefits, risks, and downsides</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="B3" id="b3-1" value="Area of strength" required><label for="b3-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B3" id="b3-1" value="Strength" required><label for="b3-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="B3" id="b3-2" value="In place"><label for="b3-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="B3" id="b3-3" value="Starting"><label for="b3-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="B3" id="b3-4" value="Via IPA/ACO"><label for="b3-4">Via IPA/ACO</label></div>
@@ -272,25 +204,69 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Care management approach for complex care needs (medical, mental health, substance use)</label>
+                        <label>Care management approach for identifying and managing the care of individuals with complex care needs, including those with co-occurring medical, mental health and/or substance use disorder</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="B4" id="b4-1" value="Area of strength" required><label for="b4-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B4" id="b4-1" value="Strength" required><label for="b4-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="B4" id="b4-2" value="In place"><label for="b4-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="B4" id="b4-3" value="Starting"><label for="b4-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="B4" id="b4-4" value="Via IPA/ACO"><label for="b4-4">Via IPA/ACO</label></div>
                             <div class="rating-option"><input type="radio" name="B4" id="b4-5" value="Not in place"><label for="b4-5">Not in place</label></div>
                         </div>
                     </div>
+
+                    <div class="capability-item">
+                        <label>Ability to contract with clinicians outside of the organization to take risk contracts <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="B5" id="b5-1" value="Strength"><label for="b5-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B5" id="b5-2" value="In place"><label for="b5-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="B5" id="b5-3" value="Starting"><label for="b5-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="B5" id="b5-4" value="Via IPA/ACO"><label for="b5-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="B5" id="b5-5" value="Not in place"><label for="b5-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to credential clinicians outside of the organization on behalf of a payer <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="B6" id="b6-1" value="Strength"><label for="b6-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B6" id="b6-2" value="In place"><label for="b6-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="B6" id="b6-3" value="Starting"><label for="b6-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="B6" id="b6-4" value="Via IPA/ACO"><label for="b6-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="B6" id="b6-5" value="Not in place"><label for="b6-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Person responsible for and skilled in overseeing an appeals and grievance process on behalf of a payer <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="B7" id="b7-1" value="Strength"><label for="b7-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B7" id="b7-2" value="In place"><label for="b7-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="B7" id="b7-3" value="Starting"><label for="b7-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="B7" id="b7-4" value="Via IPA/ACO"><label for="b7-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="B7" id="b7-5" value="Not in place"><label for="b7-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to conduct effective utilization management and utilization review functions on behalf of a payer <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="B8" id="b8-1" value="Strength"><label for="b8-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="B8" id="b8-2" value="In place"><label for="b8-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="B8" id="b8-3" value="Starting"><label for="b8-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="B8" id="b8-4" value="Via IPA/ACO"><label for="b8-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="B8" id="b8-5" value="Not in place"><label for="b8-5">Not in place</label></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- C. Data & Analytics -->
+                <!-- C. Data, Analytics, Technology -->
                 <div class="capability-section">
                     <h3>C. Data, Analytics, and Technology</h3>
                     
                     <div class="capability-item">
-                        <label>Ability to review and correct patient attribution lists under VBP contracts</label>
+                        <label>Ability to review, and correct if needed, the accuracy of a list of people attributed to or assigned to the organization under a VBP contract against those who use care at the organization</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="C1" id="c1-1" value="Area of strength" required><label for="c1-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C1" id="c1-1" value="Strength" required><label for="c1-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="C1" id="c1-2" value="In place"><label for="c1-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="C1" id="c1-3" value="Starting"><label for="c1-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="C1" id="c1-4" value="Via IPA/ACO"><label for="c1-4">Via IPA/ACO</label></div>
@@ -299,9 +275,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Connections to QHIOs and/or data exchanges for holistic patient data (e.g., hospital discharges)</label>
+                        <label>Connections to qualified health information organizations (QHIOs) and/or other data exchanges to obtain holistic data on patients (e.g., hospital discharges/admissions)</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="C2" id="c2-1" value="Area of strength" required><label for="c2-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C2" id="c2-1" value="Strength" required><label for="c2-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="C2" id="c2-2" value="In place"><label for="c2-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="C2" id="c2-3" value="Starting"><label for="c2-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="C2" id="c2-4" value="Via IPA/ACO"><label for="c2-4">Via IPA/ACO</label></div>
@@ -312,11 +288,55 @@
                     <div class="capability-item">
                         <label>Dashboard reports to monitor quality performance</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="C3" id="c3-1" value="Area of strength" required><label for="c3-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C3" id="c3-1" value="Strength" required><label for="c3-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="C3" id="c3-2" value="In place"><label for="c3-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="C3" id="c3-3" value="Starting"><label for="c3-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="C3" id="c3-4" value="Via IPA/ACO"><label for="c3-4">Via IPA/ACO</label></div>
                             <div class="rating-option"><input type="radio" name="C3" id="c3-5" value="Not in place"><label for="c3-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to obtain and analyze claims data <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="C4" id="c4-1" value="Strength"><label for="c4-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C4" id="c4-2" value="In place"><label for="c4-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="C4" id="c4-3" value="Starting"><label for="c4-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="C4" id="c4-4" value="Via IPA/ACO"><label for="c4-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="C4" id="c4-5" value="Not in place"><label for="c4-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to track hospital, specialty care, and pharmacy utilization <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="C5" id="c5-1" value="Strength"><label for="c5-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C5" id="c5-2" value="In place"><label for="c5-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="C5" id="c5-3" value="Starting"><label for="c5-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="C5" id="c5-4" value="Via IPA/ACO"><label for="c5-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="C5" id="c5-5" value="Not in place"><label for="c5-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Database of contact information enabling outreach to attributed patients <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="C6" id="c6-1" value="Strength"><label for="c6-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C6" id="c6-2" value="In place"><label for="c6-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="C6" id="c6-3" value="Starting"><label for="c6-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="C6" id="c6-4" value="Via IPA/ACO"><label for="c6-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="C6" id="c6-5" value="Not in place"><label for="c6-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to track rising risk index of patients and subpopulations and to deploy targeted clinical interventions to meet performance expectations under VBP arrangements <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="C7" id="c7-1" value="Strength"><label for="c7-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="C7" id="c7-2" value="In place"><label for="c7-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="C7" id="c7-3" value="Starting"><label for="c7-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="C7" id="c7-4" value="Via IPA/ACO"><label for="c7-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="C7" id="c7-5" value="Not in place"><label for="c7-5">Not in place</label></div>
                         </div>
                     </div>
                 </div>
@@ -326,9 +346,9 @@
                     <h3>D. Financial</h3>
                     
                     <div class="capability-item">
-                        <label>Ability to assess potential revenue from VBP, accounting for infrastructure costs and incentives</label>
+                        <label>Ability to assess potential revenue associated with the VBP opportunity, taking into account infrastructure costs and incentive payments</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="D1" id="d1-1" value="Area of strength" required><label for="d1-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D1" id="d1-1" value="Strength" required><label for="d1-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="D1" id="d1-2" value="In place"><label for="d1-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="D1" id="d1-3" value="Starting"><label for="d1-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="D1" id="d1-4" value="Via IPA/ACO"><label for="d1-4">Via IPA/ACO</label></div>
@@ -337,9 +357,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Methodology for allocating gains/losses among participating clinicians or partners</label>
+                        <label>Determination of methodology for allocating and apportioning any gains or losses among participating clinicians or other partners</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="D2" id="d2-1" value="Area of strength" required><label for="d2-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D2" id="d2-1" value="Strength" required><label for="d2-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="D2" id="d2-2" value="In place"><label for="d2-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="D2" id="d2-3" value="Starting"><label for="d2-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="D2" id="d2-4" value="Via IPA/ACO"><label for="d2-4">Via IPA/ACO</label></div>
@@ -350,11 +370,44 @@
                     <div class="capability-item">
                         <label>Billing and coding expertise to capture all care delivered</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="D3" id="d3-1" value="Area of strength" required><label for="d3-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D3" id="d3-1" value="Strength" required><label for="d3-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="D3" id="d3-2" value="In place"><label for="d3-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="D3" id="d3-3" value="Starting"><label for="d3-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="D3" id="d3-4" value="Via IPA/ACO"><label for="d3-4">Via IPA/ACO</label></div>
                             <div class="rating-option"><input type="radio" name="D3" id="d3-5" value="Not in place"><label for="d3-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Dashboard reports to track spending performance against contract goals over the year to inform management and meet benchmarks <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="D4" id="d4-1" value="Strength"><label for="d4-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D4" id="d4-2" value="In place"><label for="d4-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="D4" id="d4-3" value="Starting"><label for="d4-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="D4" id="d4-4" value="Via IPA/ACO"><label for="d4-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="D4" id="d4-5" value="Not in place"><label for="d4-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Funding of capital reserves <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="D5" id="d5-1" value="Strength"><label for="d5-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D5" id="d5-2" value="In place"><label for="d5-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="D5" id="d5-3" value="Starting"><label for="d5-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="D5" id="d5-4" value="Via IPA/ACO"><label for="d5-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="D5" id="d5-5" value="Not in place"><label for="d5-5">Not in place</label></div>
+                        </div>
+                    </div>
+
+                    <div class="capability-item">
+                        <label>Ability to pay claims on a fee schedule <span class="optional">*</span></label>
+                        <div class="rating-scale">
+                            <div class="rating-option"><input type="radio" name="D6" id="d6-1" value="Strength"><label for="d6-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="D6" id="d6-2" value="In place"><label for="d6-2">In place</label></div>
+                            <div class="rating-option"><input type="radio" name="D6" id="d6-3" value="Starting"><label for="d6-3">Starting</label></div>
+                            <div class="rating-option"><input type="radio" name="D6" id="d6-4" value="Via IPA/ACO"><label for="d6-4">Via IPA/ACO</label></div>
+                            <div class="rating-option"><input type="radio" name="D6" id="d6-5" value="Not in place"><label for="d6-5">Not in place</label></div>
                         </div>
                     </div>
                 </div>
@@ -364,9 +417,9 @@
                     <h3>E. Payer and Partner Relations</h3>
                     
                     <div class="capability-item">
-                        <label>Productive working relationships with hospitals, specialists, behavioral health providers, and community organizations</label>
+                        <label>Productive working relationships with hospitals, specialists, behavioral health providers, and community organizations within the service area to support care coordination and care transitions to and from emergency room, in-patient settings, etc.</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="E1" id="e1-1" value="Area of strength" required><label for="e1-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="E1" id="e1-1" value="Strength" required><label for="e1-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="E1" id="e1-2" value="In place"><label for="e1-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="E1" id="e1-3" value="Starting"><label for="e1-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="E1" id="e1-4" value="Via IPA/ACO"><label for="e1-4">Via IPA/ACO</label></div>
@@ -375,9 +428,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Functional data sharing with key partners (ADT feeds, closed-loop referrals)</label>
+                        <label>Functional data sharing capabilities with key partners like hospitals, specialists, behavioral health providers, community organizations, etc. within the service area (e.g. ADT feeds, closed-loop referrals) to enable population management</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="E2" id="e2-1" value="Area of strength" required><label for="e2-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="E2" id="e2-1" value="Strength" required><label for="e2-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="E2" id="e2-2" value="In place"><label for="e2-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="E2" id="e2-3" value="Starting"><label for="e2-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="E2" id="e2-4" value="Via IPA/ACO"><label for="e2-4">Via IPA/ACO</label></div>
@@ -386,9 +439,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Productive working relationships with IPAs, ACOs or MCPs including shared accountability</label>
+                        <label>Productive working relationships with IPAs, ACOs or MCPs including shared accountability for quality, cost, and patient attribution and reconciliation</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="E3" id="e3-1" value="Area of strength" required><label for="e3-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="E3" id="e3-1" value="Strength" required><label for="e3-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="E3" id="e3-2" value="In place"><label for="e3-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="E3" id="e3-3" value="Starting"><label for="e3-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="E3" id="e3-4" value="Via IPA/ACO"><label for="e3-4">Via IPA/ACO</label></div>
@@ -397,9 +450,9 @@
                     </div>
 
                     <div class="capability-item">
-                        <label>Functional data sharing capabilities with IPAs, ACOs or MCPs</label>
+                        <label>Functional data sharing capabilities with IPAs, ACOs or MCPs including data exchange</label>
                         <div class="rating-scale">
-                            <div class="rating-option"><input type="radio" name="E4" id="e4-1" value="Area of strength" required><label for="e4-1">Strength</label></div>
+                            <div class="rating-option"><input type="radio" name="E4" id="e4-1" value="Strength" required><label for="e4-1">Strength</label></div>
                             <div class="rating-option"><input type="radio" name="E4" id="e4-2" value="In place"><label for="e4-2">In place</label></div>
                             <div class="rating-option"><input type="radio" name="E4" id="e4-3" value="Starting"><label for="e4-3">Starting</label></div>
                             <div class="rating-option"><input type="radio" name="E4" id="e4-4" value="Via IPA/ACO"><label for="e4-4">Via IPA/ACO</label></div>
@@ -409,7 +462,6 @@
                 </div>
             </div>
 
-            <!-- Additional Notes -->
             <div class="card">
                 <h2>Additional Notes</h2>
                 <label for="notes">Any additional context or comments (optional)</label>
