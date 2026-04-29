@@ -1112,8 +1112,9 @@
         }
 
         // Warn before leaving with unsaved changes
+        let isSubmitting = false;
         window.addEventListener('beforeunload', function(e) {
-            if (formDirty) {
+            if (formDirty && !isSubmitting) {
                 // Force a final save before unload
                 saveFormData();
                 e.preventDefault();
@@ -1124,7 +1125,40 @@
         // Clear draft on successful submission
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('vbp-form');
-            form.addEventListener('submit', function() {
+
+            // Custom submit handler to validate across hidden tabs
+            form.addEventListener('submit', function(e) {
+                // Temporarily show all tabs so the browser can validate required fields
+                const allTabs = document.querySelectorAll('.tab-content');
+                allTabs.forEach(t => t.style.display = 'block');
+
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    // Find the first invalid field and switch to its tab
+                    const firstInvalid = form.querySelector(':invalid');
+                    if (firstInvalid) {
+                        const parentTab = firstInvalid.closest('.tab-content');
+                        if (parentTab) {
+                            // Restore hidden state before switching tabs
+                            allTabs.forEach(t => t.style.display = '');
+                            const tabId = parentTab.id.replace('tab-', '');
+                            switchTab(tabId);
+                            // Scroll to and highlight the invalid field
+                            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            firstInvalid.focus();
+                            firstInvalid.reportValidity();
+                        } else {
+                            allTabs.forEach(t => t.style.display = '');
+                        }
+                    } else {
+                        allTabs.forEach(t => t.style.display = '');
+                    }
+                    return;
+                }
+
+                // Valid — restore display, mark submitting, clear draft
+                allTabs.forEach(t => t.style.display = '');
+                isSubmitting = true;
                 clearFormDraft();
             });
         });
