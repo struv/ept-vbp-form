@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v2.1 - Progress bar fix -->
+<!-- v3.0 - Added Gap Analysis and Action Plan tabs -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,12 +53,55 @@
         .rating-option label:hover { border-color: #a3a3a3; }
         button[type="submit"] { width: 100%; padding: 0.875rem; background: #171717; border: none; border-radius: 8px; color: white; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
         button[type="submit"]:hover { background: #404040; }
-        .progress-container { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 1rem; margin-bottom: 1.5rem; margin-left: -1rem; margin-right: -1rem; width: calc(100% + 2rem); }
+        .progress-container { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 1rem; margin-bottom: 0; margin-left: -1rem; margin-right: -1rem; width: calc(100% + 2rem); }
         .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
         .progress-label { font-size: 0.75rem; font-weight: 500; color: #737373; }
         .progress-percent { font-size: 0.75rem; font-weight: 600; color: #171717; }
         .progress-bar { height: 4px; background: #e5e5e5; border-radius: 2px; overflow: hidden; }
         .progress-fill { height: 100%; background: #171717; border-radius: 2px; transition: width 0.3s ease; width: 0%; }
+
+        /* Tab Navigation */
+        .tab-nav { display: flex; gap: 0; margin-bottom: 1.5rem; margin-left: -1rem; margin-right: -1rem; width: calc(100% + 2rem); border-bottom: 1px solid #e5e5e5; background: #fff; padding: 0 1rem; position: sticky; top: 68px; z-index: 99; }
+        .tab-btn { flex: 1; padding: 0.75rem 0.5rem; background: none; border: none; border-bottom: 2px solid transparent; font-family: inherit; font-size: 0.8rem; font-weight: 500; color: #737373; cursor: pointer; transition: all 0.15s; text-align: center; white-space: nowrap; }
+        .tab-btn:hover { color: #404040; background: #fafafa; }
+        .tab-btn.active { color: #171717; border-bottom-color: #171717; font-weight: 600; }
+        .tab-btn .tab-number { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #e5e5e5; font-size: 0.65rem; font-weight: 600; margin-right: 0.375rem; color: #737373; }
+        .tab-btn.active .tab-number { background: #171717; color: #fff; }
+        .tab-btn.completed .tab-number { background: #16a34a; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Gap Analysis Table Styles */
+        .gap-domain { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f5f5f5; }
+        .gap-domain:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .gap-domain h3 { font-size: 0.9rem; font-weight: 600; color: #171717; margin-bottom: 0.25rem; }
+        .gap-domain .domain-desc { font-size: 0.8rem; color: #737373; margin-bottom: 1rem; }
+        .gap-field { margin-bottom: 1rem; }
+        .gap-field label { font-size: 0.8rem; font-weight: 500; color: #404040; margin-bottom: 0.375rem; }
+        .gap-field textarea { min-height: 60px; }
+        .gap-field select { width: 100%; padding: 0.625rem 0.875rem; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; color: #171717; font-size: 0.9rem; font-family: inherit; margin-bottom: 0; cursor: pointer; }
+        .gap-field select:focus { outline: none; border-color: #171717; box-shadow: 0 0 0 1px #171717; }
+        .gap-fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 600px) { .gap-fields-row { grid-template-columns: 1fr; } }
+
+        /* Capability Improvement */
+        .capability-improvement { margin-bottom: 1.5rem; padding: 1rem; background: #fafafa; border: 1px solid #e5e5e5; border-radius: 8px; }
+        .capability-improvement h4 { font-size: 0.85rem; font-weight: 600; color: #171717; margin-bottom: 0.75rem; }
+
+        /* Action Plan Styles */
+        .action-plan-area { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f5f5f5; }
+        .action-plan-area:last-child { border-bottom: none; }
+        .action-plan-area h3 { font-size: 0.9rem; font-weight: 600; color: #171717; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #f5f5f5; }
+        .action-field { margin-bottom: 1rem; }
+        .action-field label { font-size: 0.8rem; font-weight: 500; color: #404040; margin-bottom: 0.375rem; }
+        .action-field textarea { min-height: 70px; }
+
+        /* Nav buttons */
+        .tab-nav-buttons { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .btn-secondary { flex: 1; padding: 0.75rem; background: #fff; border: 1px solid #d4d4d4; border-radius: 8px; color: #404040; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+        .btn-secondary:hover { border-color: #a3a3a3; background: #fafafa; }
+        .btn-primary { flex: 1; padding: 0.75rem; background: #171717; border: none; border-radius: 8px; color: white; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.15s; font-family: inherit; }
+        .btn-primary:hover { background: #404040; }
     </style>
 </head>
 <body>
@@ -78,11 +121,26 @@
             <span class="milestone-badge">$26,169 Milestone</span>
         </header>
 
+        <div class="tab-nav">
+            <button type="button" class="tab-btn active" data-tab="vapcat" onclick="switchTab('vapcat')">
+                <span class="tab-number">1</span>VaPCAT
+            </button>
+            <button type="button" class="tab-btn" data-tab="gap-analysis" onclick="switchTab('gap-analysis')">
+                <span class="tab-number">2</span>Gap Analysis
+            </button>
+            <button type="button" class="tab-btn" data-tab="action-plan" onclick="switchTab('action-plan')">
+                <span class="tab-number">3</span>Action Plan
+            </button>
+        </div>
+
         <form id="vbp-form" action="https://formsubmit.co/wstruve2@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="VBP Readiness Assessment Submitted">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://struv.github.io/ept-vbp-form/success.html">
+
+            <!-- Tab 1: VaPCAT -->
+            <div id="tab-vapcat" class="tab-content active">
 
             <!-- Section 2 -->
             <div class="card">
@@ -484,36 +542,697 @@
                 <textarea id="notes" name="Additional Notes" placeholder="Any additional information..."></textarea>
             </div>
 
-            <button type="submit">Submit Assessment</button>
+            <div class="tab-nav-buttons">
+                <button type="button" class="btn-primary" onclick="switchTab('gap-analysis')">Continue to Gap Analysis</button>
+            </div>
+
+            </div><!-- end Tab 1: VaPCAT -->
+
+            <!-- Tab 2: Gap Analysis -->
+            <div id="tab-gap-analysis" class="tab-content">
+            <div class="card">
+                <p class="section-title">VBP Deliverable</p>
+                <h2>Gap Analysis</h2>
+                <p class="question-text">Use your VaPCAT results to identify gaps in VBP capabilities across the five domains. For each domain, describe your current state, rate your maturity, identify specific gaps, set a priority, and provide your rationale.</p>
+
+                <!-- Domain A -->
+                <div class="gap-domain">
+                    <h3>A. Leadership, Governance, and Legal</h3>
+                    <p class="domain-desc">e.g., organizational alignment &amp; VBP implementation, governance &amp; oversight, and risk assessment</p>
+                    <div class="gap-field">
+                        <label for="gap-a-current">Current State (brief description of existing capabilities)</label>
+                        <textarea id="gap-a-current" name="Gap A - Current State" placeholder="Describe your current capabilities in this domain..."></textarea>
+                    </div>
+                    <div class="gap-fields-row">
+                        <div class="gap-field">
+                            <label for="gap-a-maturity">VBP Domain Maturity (0-5)</label>
+                            <select id="gap-a-maturity" name="Gap A - Maturity">
+                                <option value="">Select rating...</option>
+                                <option value="0">0 - No capabilities in place</option>
+                                <option value="1">1 - Minimal components of a few elements</option>
+                                <option value="2">2 - Minimal components of most/all elements</option>
+                                <option value="3">3 - At least one strength, minimal in others</option>
+                                <option value="4">4 - Several components are strengths</option>
+                                <option value="5">5 - Most/all components are strengths</option>
+                            </select>
+                        </div>
+                        <div class="gap-field">
+                            <label for="gap-a-priority">Priority for Action</label>
+                            <select id="gap-a-priority" name="Gap A - Priority">
+                                <option value="">Select priority...</option>
+                                <option value="High">High - Gaps materially limit VBP participation</option>
+                                <option value="Medium">Medium - Important but not an immediate barrier</option>
+                                <option value="Low">Low - Less important or partially addressed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-a-gaps">Specific Capability Gaps</label>
+                        <textarea id="gap-a-gaps" name="Gap A - Capability Gaps" placeholder="List the most significant gaps in this domain..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-a-rationale">Rationale</label>
+                        <textarea id="gap-a-rationale" name="Gap A - Rationale" placeholder="Describe the reasons for your priority rating..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Domain B -->
+                <div class="gap-domain">
+                    <h3>B. Operations</h3>
+                    <p class="domain-desc">e.g., educate staff on VBP, dedicated staff for negotiating VBP contracts, care management approach, contracting/credentialing/grievance/utilization review functions</p>
+                    <div class="gap-field">
+                        <label for="gap-b-current">Current State (brief description of existing capabilities)</label>
+                        <textarea id="gap-b-current" name="Gap B - Current State" placeholder="Describe your current capabilities in this domain..."></textarea>
+                    </div>
+                    <div class="gap-fields-row">
+                        <div class="gap-field">
+                            <label for="gap-b-maturity">VBP Domain Maturity (0-5)</label>
+                            <select id="gap-b-maturity" name="Gap B - Maturity">
+                                <option value="">Select rating...</option>
+                                <option value="0">0 - No capabilities in place</option>
+                                <option value="1">1 - Minimal components of a few elements</option>
+                                <option value="2">2 - Minimal components of most/all elements</option>
+                                <option value="3">3 - At least one strength, minimal in others</option>
+                                <option value="4">4 - Several components are strengths</option>
+                                <option value="5">5 - Most/all components are strengths</option>
+                            </select>
+                        </div>
+                        <div class="gap-field">
+                            <label for="gap-b-priority">Priority for Action</label>
+                            <select id="gap-b-priority" name="Gap B - Priority">
+                                <option value="">Select priority...</option>
+                                <option value="High">High - Gaps materially limit VBP participation</option>
+                                <option value="Medium">Medium - Important but not an immediate barrier</option>
+                                <option value="Low">Low - Less important or partially addressed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-b-gaps">Specific Capability Gaps</label>
+                        <textarea id="gap-b-gaps" name="Gap B - Capability Gaps" placeholder="List the most significant gaps in this domain..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-b-rationale">Rationale</label>
+                        <textarea id="gap-b-rationale" name="Gap B - Rationale" placeholder="Describe the reasons for your priority rating..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Domain C -->
+                <div class="gap-domain">
+                    <h3>C. Data, Analytics, and Technology</h3>
+                    <p class="domain-desc">e.g., performance measurement, track quality &amp; cost, data-driven decision making, QHIO connection, tracking rising risk</p>
+                    <div class="gap-field">
+                        <label for="gap-c-current">Current State (brief description of existing capabilities)</label>
+                        <textarea id="gap-c-current" name="Gap C - Current State" placeholder="Describe your current capabilities in this domain..."></textarea>
+                    </div>
+                    <div class="gap-fields-row">
+                        <div class="gap-field">
+                            <label for="gap-c-maturity">VBP Domain Maturity (0-5)</label>
+                            <select id="gap-c-maturity" name="Gap C - Maturity">
+                                <option value="">Select rating...</option>
+                                <option value="0">0 - No capabilities in place</option>
+                                <option value="1">1 - Minimal components of a few elements</option>
+                                <option value="2">2 - Minimal components of most/all elements</option>
+                                <option value="3">3 - At least one strength, minimal in others</option>
+                                <option value="4">4 - Several components are strengths</option>
+                                <option value="5">5 - Most/all components are strengths</option>
+                            </select>
+                        </div>
+                        <div class="gap-field">
+                            <label for="gap-c-priority">Priority for Action</label>
+                            <select id="gap-c-priority" name="Gap C - Priority">
+                                <option value="">Select priority...</option>
+                                <option value="High">High - Gaps materially limit VBP participation</option>
+                                <option value="Medium">Medium - Important but not an immediate barrier</option>
+                                <option value="Low">Low - Less important or partially addressed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-c-gaps">Specific Capability Gaps</label>
+                        <textarea id="gap-c-gaps" name="Gap C - Capability Gaps" placeholder="List the most significant gaps in this domain..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-c-rationale">Rationale</label>
+                        <textarea id="gap-c-rationale" name="Gap C - Rationale" placeholder="Describe the reasons for your priority rating..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Domain D -->
+                <div class="gap-domain">
+                    <h3>D. Financial</h3>
+                    <p class="domain-desc">e.g., model risk &amp; potential payments, billing and coding expertise, dashboards, reserves</p>
+                    <div class="gap-field">
+                        <label for="gap-d-current">Current State (brief description of existing capabilities)</label>
+                        <textarea id="gap-d-current" name="Gap D - Current State" placeholder="Describe your current capabilities in this domain..."></textarea>
+                    </div>
+                    <div class="gap-fields-row">
+                        <div class="gap-field">
+                            <label for="gap-d-maturity">VBP Domain Maturity (0-5)</label>
+                            <select id="gap-d-maturity" name="Gap D - Maturity">
+                                <option value="">Select rating...</option>
+                                <option value="0">0 - No capabilities in place</option>
+                                <option value="1">1 - Minimal components of a few elements</option>
+                                <option value="2">2 - Minimal components of most/all elements</option>
+                                <option value="3">3 - At least one strength, minimal in others</option>
+                                <option value="4">4 - Several components are strengths</option>
+                                <option value="5">5 - Most/all components are strengths</option>
+                            </select>
+                        </div>
+                        <div class="gap-field">
+                            <label for="gap-d-priority">Priority for Action</label>
+                            <select id="gap-d-priority" name="Gap D - Priority">
+                                <option value="">Select priority...</option>
+                                <option value="High">High - Gaps materially limit VBP participation</option>
+                                <option value="Medium">Medium - Important but not an immediate barrier</option>
+                                <option value="Low">Low - Less important or partially addressed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-d-gaps">Specific Capability Gaps</label>
+                        <textarea id="gap-d-gaps" name="Gap D - Capability Gaps" placeholder="List the most significant gaps in this domain..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-d-rationale">Rationale</label>
+                        <textarea id="gap-d-rationale" name="Gap D - Rationale" placeholder="Describe the reasons for your priority rating..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Domain E -->
+                <div class="gap-domain">
+                    <h3>E. Payer and Partner Relations</h3>
+                    <p class="domain-desc">e.g., productive relationships with clinical and community partners; functional data exchange; shared accountability for quality/cost</p>
+                    <div class="gap-field">
+                        <label for="gap-e-current">Current State (brief description of existing capabilities)</label>
+                        <textarea id="gap-e-current" name="Gap E - Current State" placeholder="Describe your current capabilities in this domain..."></textarea>
+                    </div>
+                    <div class="gap-fields-row">
+                        <div class="gap-field">
+                            <label for="gap-e-maturity">VBP Domain Maturity (0-5)</label>
+                            <select id="gap-e-maturity" name="Gap E - Maturity">
+                                <option value="">Select rating...</option>
+                                <option value="0">0 - No capabilities in place</option>
+                                <option value="1">1 - Minimal components of a few elements</option>
+                                <option value="2">2 - Minimal components of most/all elements</option>
+                                <option value="3">3 - At least one strength, minimal in others</option>
+                                <option value="4">4 - Several components are strengths</option>
+                                <option value="5">5 - Most/all components are strengths</option>
+                            </select>
+                        </div>
+                        <div class="gap-field">
+                            <label for="gap-e-priority">Priority for Action</label>
+                            <select id="gap-e-priority" name="Gap E - Priority">
+                                <option value="">Select priority...</option>
+                                <option value="High">High - Gaps materially limit VBP participation</option>
+                                <option value="Medium">Medium - Important but not an immediate barrier</option>
+                                <option value="Low">Low - Less important or partially addressed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-e-gaps">Specific Capability Gaps</label>
+                        <textarea id="gap-e-gaps" name="Gap E - Capability Gaps" placeholder="List the most significant gaps in this domain..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="gap-e-rationale">Rationale</label>
+                        <textarea id="gap-e-rationale" name="Gap E - Rationale" placeholder="Describe the reasons for your priority rating..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Three Capabilities to Improve -->
+            <div class="card">
+                <h2>Three Capabilities to Address</h2>
+                <p class="question-text">Based on the gap analysis above, list three capabilities your EPT practice will address to improve readiness for VBP contracting. For each, describe: (1) the specific capability; (2) why it is a priority; and (3) whether it is best developed internally or provided by a partner (e.g., IPA, MCP, ACO).</p>
+
+                <div class="capability-improvement">
+                    <h4>Capability 1</h4>
+                    <div class="gap-field">
+                        <label for="cap1-what">Specific capability to develop or improve</label>
+                        <textarea id="cap1-what" name="Capability 1 - Description" placeholder="Describe the specific capability..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap1-why">Why this is a priority for your practice</label>
+                        <textarea id="cap1-why" name="Capability 1 - Priority Reason" placeholder="Explain why this is a priority..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap1-how">Developed internally or provided by a partner?</label>
+                        <textarea id="cap1-how" name="Capability 1 - Internal or Partner" placeholder="Explain whether this will be built internally or via a partner (IPA, MCP, ACO)..."></textarea>
+                    </div>
+                </div>
+
+                <div class="capability-improvement">
+                    <h4>Capability 2</h4>
+                    <div class="gap-field">
+                        <label for="cap2-what">Specific capability to develop or improve</label>
+                        <textarea id="cap2-what" name="Capability 2 - Description" placeholder="Describe the specific capability..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap2-why">Why this is a priority for your practice</label>
+                        <textarea id="cap2-why" name="Capability 2 - Priority Reason" placeholder="Explain why this is a priority..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap2-how">Developed internally or provided by a partner?</label>
+                        <textarea id="cap2-how" name="Capability 2 - Internal or Partner" placeholder="Explain whether this will be built internally or via a partner (IPA, MCP, ACO)..."></textarea>
+                    </div>
+                </div>
+
+                <div class="capability-improvement">
+                    <h4>Capability 3</h4>
+                    <div class="gap-field">
+                        <label for="cap3-what">Specific capability to develop or improve</label>
+                        <textarea id="cap3-what" name="Capability 3 - Description" placeholder="Describe the specific capability..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap3-why">Why this is a priority for your practice</label>
+                        <textarea id="cap3-why" name="Capability 3 - Priority Reason" placeholder="Explain why this is a priority..."></textarea>
+                    </div>
+                    <div class="gap-field">
+                        <label for="cap3-how">Developed internally or provided by a partner?</label>
+                        <textarea id="cap3-how" name="Capability 3 - Internal or Partner" placeholder="Explain whether this will be built internally or via a partner (IPA, MCP, ACO)..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-nav-buttons">
+                <button type="button" class="btn-secondary" onclick="switchTab('vapcat')">Back to VaPCAT</button>
+                <button type="button" class="btn-primary" onclick="switchTab('action-plan')">Continue to Action Plan</button>
+            </div>
+
+            </div><!-- end Tab 2: Gap Analysis -->
+
+            <!-- Tab 3: Action Plan -->
+            <div id="tab-action-plan" class="tab-content">
+            <div class="card">
+                <p class="section-title">VBP Deliverable</p>
+                <h2>Action Plan</h2>
+                <p class="question-text">Describe what will be involved in improving the three capabilities identified in your gap analysis. Start by summarizing the planning process, then complete the action plan for each capability.</p>
+
+                <!-- Process Summary -->
+                <div class="action-plan-area">
+                    <h3>Planning Process Summary</h3>
+                    <div class="action-field">
+                        <label for="process-overview">Brief overview of your activities and approach</label>
+                        <textarea id="process-overview" name="Action Plan - Process Overview" placeholder="Describe the process your practice used to develop this action plan..."></textarea>
+                    </div>
+                    <div class="action-field">
+                        <label for="process-staff">Leadership and staff involved in the discussions</label>
+                        <textarea id="process-staff" name="Action Plan - Staff Involved" placeholder="List the leadership and staff who were involved..."></textarea>
+                    </div>
+                    <div class="action-field">
+                        <label for="process-alignment">How this aligns with other priorities in your practice</label>
+                        <textarea id="process-alignment" name="Action Plan - Alignment" placeholder="Describe how this action plan aligns with your other organizational priorities..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Plan Area 1 -->
+            <div class="card">
+                <h2>Area of Improvement 1</h2>
+                <div class="action-field">
+                    <label for="ap1-goals">Goals</label>
+                    <textarea id="ap1-goals" name="Action Plan 1 - Goals" placeholder="Describe the capability you want to build or refine and how it will improve your success with VBP..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-activities">Major Activities &amp; Timeline</label>
+                    <textarea id="ap1-activities" name="Action Plan 1 - Activities" placeholder="List a minimum of 3 steps with expected completion month/year for each..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-decisions">Key Decisions</label>
+                    <textarea id="ap1-decisions" name="Action Plan 1 - Decisions" placeholder="Describe at least 2 key decisions your practice will need to make (e.g., build internally vs. partner; allocating funds; defining benchmarks)..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-structural">Structural Changes</label>
+                    <textarea id="ap1-structural" name="Action Plan 1 - Structural Changes" placeholder="Describe at least 1 structural change (e.g., governance, staffing, contracting, workflow redesign)..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-staffing">Staffing</label>
+                    <textarea id="ap1-staffing" name="Action Plan 1 - Staffing" placeholder="Which staff will be responsible? What other key staff will be involved?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-leadership">Leadership Engagement</label>
+                    <textarea id="ap1-leadership" name="Action Plan 1 - Leadership" placeholder="How will you engage leadership? What do you need from leadership to be successful?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap1-measuring">Measuring Progress</label>
+                    <textarea id="ap1-measuring" name="Action Plan 1 - Measuring Progress" placeholder="Provide at least 1 specific and measurable indicator of progress..."></textarea>
+                </div>
+            </div>
+
+            <!-- Action Plan Area 2 -->
+            <div class="card">
+                <h2>Area of Improvement 2</h2>
+                <div class="action-field">
+                    <label for="ap2-goals">Goals</label>
+                    <textarea id="ap2-goals" name="Action Plan 2 - Goals" placeholder="Describe the capability you want to build or refine and how it will improve your success with VBP..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-activities">Major Activities &amp; Timeline</label>
+                    <textarea id="ap2-activities" name="Action Plan 2 - Activities" placeholder="List a minimum of 3 steps with expected completion month/year for each..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-decisions">Key Decisions</label>
+                    <textarea id="ap2-decisions" name="Action Plan 2 - Decisions" placeholder="Describe at least 2 key decisions your practice will need to make..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-structural">Structural Changes</label>
+                    <textarea id="ap2-structural" name="Action Plan 2 - Structural Changes" placeholder="Describe at least 1 structural change..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-staffing">Staffing</label>
+                    <textarea id="ap2-staffing" name="Action Plan 2 - Staffing" placeholder="Which staff will be responsible? What other key staff will be involved?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-leadership">Leadership Engagement</label>
+                    <textarea id="ap2-leadership" name="Action Plan 2 - Leadership" placeholder="How will you engage leadership? What do you need from leadership to be successful?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap2-measuring">Measuring Progress</label>
+                    <textarea id="ap2-measuring" name="Action Plan 2 - Measuring Progress" placeholder="Provide at least 1 specific and measurable indicator of progress..."></textarea>
+                </div>
+            </div>
+
+            <!-- Action Plan Area 3 -->
+            <div class="card">
+                <h2>Area of Improvement 3</h2>
+                <div class="action-field">
+                    <label for="ap3-goals">Goals</label>
+                    <textarea id="ap3-goals" name="Action Plan 3 - Goals" placeholder="Describe the capability you want to build or refine and how it will improve your success with VBP..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-activities">Major Activities &amp; Timeline</label>
+                    <textarea id="ap3-activities" name="Action Plan 3 - Activities" placeholder="List a minimum of 3 steps with expected completion month/year for each..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-decisions">Key Decisions</label>
+                    <textarea id="ap3-decisions" name="Action Plan 3 - Decisions" placeholder="Describe at least 2 key decisions your practice will need to make..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-structural">Structural Changes</label>
+                    <textarea id="ap3-structural" name="Action Plan 3 - Structural Changes" placeholder="Describe at least 1 structural change..."></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-staffing">Staffing</label>
+                    <textarea id="ap3-staffing" name="Action Plan 3 - Staffing" placeholder="Which staff will be responsible? What other key staff will be involved?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-leadership">Leadership Engagement</label>
+                    <textarea id="ap3-leadership" name="Action Plan 3 - Leadership" placeholder="How will you engage leadership? What do you need from leadership to be successful?"></textarea>
+                </div>
+                <div class="action-field">
+                    <label for="ap3-measuring">Measuring Progress</label>
+                    <textarea id="ap3-measuring" name="Action Plan 3 - Measuring Progress" placeholder="Provide at least 1 specific and measurable indicator of progress..."></textarea>
+                </div>
+            </div>
+
+            <!-- Implementation Risks -->
+            <div class="card">
+                <h2>Implementation Risks</h2>
+                <p class="question-text">Identify the two most likely implementation risks and describe why you think you are likely to encounter them. For each risk, provide at least one mitigation strategy.</p>
+
+                <div class="capability-improvement">
+                    <h4>Risk 1</h4>
+                    <div class="action-field">
+                        <label for="risk1-desc">Describe the risk and why you expect to encounter it</label>
+                        <textarea id="risk1-desc" name="Risk 1 - Description" placeholder="Describe the implementation risk and why it is likely..."></textarea>
+                    </div>
+                    <div class="action-field">
+                        <label for="risk1-mitigation">Mitigation strategy</label>
+                        <textarea id="risk1-mitigation" name="Risk 1 - Mitigation" placeholder="Describe at least one strategy to mitigate this risk..."></textarea>
+                    </div>
+                </div>
+
+                <div class="capability-improvement">
+                    <h4>Risk 2</h4>
+                    <div class="action-field">
+                        <label for="risk2-desc">Describe the risk and why you expect to encounter it</label>
+                        <textarea id="risk2-desc" name="Risk 2 - Description" placeholder="Describe the implementation risk and why it is likely..."></textarea>
+                    </div>
+                    <div class="action-field">
+                        <label for="risk2-mitigation">Mitigation strategy</label>
+                        <textarea id="risk2-mitigation" name="Risk 2 - Mitigation" placeholder="Describe at least one strategy to mitigate this risk..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-nav-buttons">
+                <button type="button" class="btn-secondary" onclick="switchTab('gap-analysis')">Back to Gap Analysis</button>
+                <button type="submit" class="btn-primary">Submit Full Assessment</button>
+            </div>
+
+            </div><!-- end Tab 3: Action Plan -->
+
         </form>
     </div>
     <script>
-        function updateProgress() {
+        // --- Autosave System ---
+        const STORAGE_KEY = 'vbp-form-draft';
+        let saveTimeout = null;
+        let formDirty = false;
+
+        function saveFormData() {
             const form = document.getElementById('vbp-form');
-            const allRequired = form.querySelectorAll('[required]');
-            const radioGroups = {};
-            let answered = 0;
-            
-            allRequired.forEach(input => {
-                if (input.type === 'radio') {
-                    if (!radioGroups[input.name]) {
-                        radioGroups[input.name] = false;
-                    }
-                    if (input.checked) {
-                        radioGroups[input.name] = true;
-                    }
+            const data = {};
+
+            // Save all text/textarea inputs
+            form.querySelectorAll('input[type="text"], textarea').forEach(el => {
+                if (el.name && el.value) {
+                    data[el.name] = el.value;
                 }
             });
+
+            // Save all radio buttons
+            form.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+                if (el.name) {
+                    data[el.name] = el.value;
+                }
+            });
+
+            // Save all checkboxes
+            form.querySelectorAll('input[type="checkbox"]').forEach(el => {
+                if (el.name) {
+                    if (!data._checkboxes) data._checkboxes = {};
+                    if (!data._checkboxes[el.name]) data._checkboxes[el.name] = [];
+                    if (el.checked) data._checkboxes[el.name].push(el.value);
+                }
+            });
+
+            // Save all selects
+            form.querySelectorAll('select').forEach(el => {
+                if (el.name && el.value) {
+                    data[el.name] = el.value;
+                }
+            });
+
+            data._savedAt = new Date().toISOString();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            showSaveIndicator();
+        }
+
+        function restoreFormData() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+
+            let data;
+            try { data = JSON.parse(raw); } catch (e) { return; }
+
+            const form = document.getElementById('vbp-form');
+
+            // Restore text/textarea inputs
+            form.querySelectorAll('input[type="text"], textarea').forEach(el => {
+                if (el.name && data[el.name] !== undefined) {
+                    el.value = data[el.name];
+                }
+            });
+
+            // Restore radio buttons
+            form.querySelectorAll('input[type="radio"]').forEach(el => {
+                if (el.name && data[el.name] !== undefined && el.value === data[el.name]) {
+                    el.checked = true;
+                }
+            });
+
+            // Restore checkboxes
+            if (data._checkboxes) {
+                form.querySelectorAll('input[type="checkbox"]').forEach(el => {
+                    if (el.name && data._checkboxes[el.name]) {
+                        el.checked = data._checkboxes[el.name].includes(el.value);
+                    }
+                });
+            }
+
+            // Restore selects
+            form.querySelectorAll('select').forEach(el => {
+                if (el.name && data[el.name] !== undefined) {
+                    el.value = data[el.name];
+                }
+            });
+
+            // Show restored indicator
+            if (data._savedAt) {
+                const ago = getTimeAgo(new Date(data._savedAt));
+                showSaveIndicator('Draft restored from ' + ago);
+            }
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return 'just now';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return minutes + ' min ago';
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return hours + ' hr ago';
+            const days = Math.floor(hours / 24);
+            return days + ' day' + (days > 1 ? 's' : '') + ' ago';
+        }
+
+        function debouncedSave() {
+            formDirty = true;
+            if (saveTimeout) clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(saveFormData, 1000);
+        }
+
+        function showSaveIndicator(message) {
+            let indicator = document.getElementById('save-indicator');
+            if (!indicator) {
+                indicator = document.createElement('div');
+                indicator.id = 'save-indicator';
+                indicator.style.cssText = 'position:fixed;bottom:1rem;right:1rem;background:#171717;color:#fff;padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:inherit;opacity:0;transition:opacity 0.3s;z-index:1000;pointer-events:none;';
+                document.body.appendChild(indicator);
+            }
+            indicator.textContent = message || 'Draft saved';
+            indicator.style.opacity = '1';
+            setTimeout(() => { indicator.style.opacity = '0'; }, 2500);
+        }
+
+        function clearFormDraft() {
+            localStorage.removeItem(STORAGE_KEY);
+            formDirty = false;
+        }
+
+        // Warn before leaving with unsaved changes
+        window.addEventListener('beforeunload', function(e) {
+            if (formDirty) {
+                // Force a final save before unload
+                saveFormData();
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        // Clear draft on successful submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('vbp-form');
+            form.addEventListener('submit', function() {
+                clearFormDraft();
+            });
+        });
+
+        // --- End Autosave System ---
+
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             
-            answered = Object.values(radioGroups).filter(v => v).length;
-            const total = Object.keys(radioGroups).length;
-            const percent = Math.round((answered / total) * 100);
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.querySelector('[data-tab="' + tabId + '"]').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update tab completion indicators
+            updateTabCompletion();
+        }
+
+        function updateTabCompletion() {
+            // Check VaPCAT tab completion
+            const vapcatTab = document.getElementById('tab-vapcat');
+            const vapcatRequired = vapcatTab.querySelectorAll('[required]');
+            const vapcatGroups = {};
+            vapcatRequired.forEach(input => {
+                if (input.type === 'radio') {
+                    if (!vapcatGroups[input.name]) vapcatGroups[input.name] = false;
+                    if (input.checked) vapcatGroups[input.name] = true;
+                }
+            });
+            const vapcatDone = Object.values(vapcatGroups).length > 0 && Object.values(vapcatGroups).every(v => v);
+            
+            const vapcatBtn = document.querySelector('[data-tab="vapcat"]');
+            if (vapcatDone) vapcatBtn.classList.add('completed');
+            else vapcatBtn.classList.remove('completed');
+
+            // Check Gap Analysis tab - has content in any field
+            const gapTab = document.getElementById('tab-gap-analysis');
+            const gapFields = gapTab.querySelectorAll('textarea, select');
+            let gapFilled = 0;
+            gapFields.forEach(f => { if (f.value.trim()) gapFilled++; });
+            const gapBtn = document.querySelector('[data-tab="gap-analysis"]');
+            if (gapFilled >= 10) gapBtn.classList.add('completed');
+            else gapBtn.classList.remove('completed');
+
+            // Check Action Plan tab
+            const apTab = document.getElementById('tab-action-plan');
+            const apFields = apTab.querySelectorAll('textarea');
+            let apFilled = 0;
+            apFields.forEach(f => { if (f.value.trim()) apFilled++; });
+            const apBtn = document.querySelector('[data-tab="action-plan"]');
+            if (apFilled >= 10) apBtn.classList.add('completed');
+            else apBtn.classList.remove('completed');
+        }
+
+        function updateProgress() {
+            const form = document.getElementById('vbp-form');
+            
+            // Count VaPCAT radio groups
+            const allRequired = form.querySelectorAll('[required]');
+            const radioGroups = {};
+            allRequired.forEach(input => {
+                if (input.type === 'radio') {
+                    if (!radioGroups[input.name]) radioGroups[input.name] = false;
+                    if (input.checked) radioGroups[input.name] = true;
+                }
+            });
+            const vapcatAnswered = Object.values(radioGroups).filter(v => v).length;
+            const vapcatTotal = Object.keys(radioGroups).length;
+            
+            // Count Gap Analysis fields filled (25 fields across 5 domains)
+            const gapTab = document.getElementById('tab-gap-analysis');
+            const gapFields = gapTab.querySelectorAll('textarea, select');
+            let gapFilled = 0;
+            gapFields.forEach(f => { if (f.value.trim()) gapFilled++; });
+            const gapTotal = gapFields.length;
+            
+            // Count Action Plan fields filled
+            const apTab = document.getElementById('tab-action-plan');
+            const apFields = apTab.querySelectorAll('textarea');
+            let apFilled = 0;
+            apFields.forEach(f => { if (f.value.trim()) apFilled++; });
+            const apTotal = apFields.length;
+            
+            // Overall progress (weighted: VaPCAT 40%, Gap 30%, Action Plan 30%)
+            const vapcatPct = vapcatTotal > 0 ? vapcatAnswered / vapcatTotal : 0;
+            const gapPct = gapTotal > 0 ? gapFilled / gapTotal : 0;
+            const apPct = apTotal > 0 ? apFilled / apTotal : 0;
+            const percent = Math.round((vapcatPct * 0.4 + gapPct * 0.3 + apPct * 0.3) * 100);
             
             document.getElementById('progress-fill').style.width = percent + '%';
             document.getElementById('progress-text').textContent = percent + '%';
+            
+            updateTabCompletion();
         }
         
         document.getElementById('vbp-form').addEventListener('change', updateProgress);
+        document.getElementById('vbp-form').addEventListener('input', updateProgress);
+
+        // Autosave listeners
+        document.getElementById('vbp-form').addEventListener('change', debouncedSave);
+        document.getElementById('vbp-form').addEventListener('input', debouncedSave);
+
+        // Restore saved draft on page load
+        restoreFormData();
         updateProgress();
     </script>
 </body>
